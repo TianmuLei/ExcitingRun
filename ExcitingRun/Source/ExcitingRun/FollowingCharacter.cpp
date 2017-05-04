@@ -40,4 +40,12 @@ void AFollowingCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInput
 //void AFollowingCharacter::BeginTouch(AExcitingRunCharacter character){
     
 //}
+void AFollowingCharacter::speedup(){
+    FTimerHandle timer;
+    GetWorldTimerManager().SetTimer(timer, this, &AFollowingCharacter::slowdown,3.0);
+    GetCharacterMovement()->MaxWalkSpeed = 1200.0F;
+}
 
+void AFollowingCharacter::slowdown(){
+    GetCharacterMovement()->MaxWalkSpeed = 800.0F;
+}

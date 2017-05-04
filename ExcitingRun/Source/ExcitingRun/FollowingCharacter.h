@@ -14,6 +14,8 @@ class EXCITINGRUN_API AFollowingCharacter : public ACharacter
 public:
 	// Sets default values for this character's properties
 	AFollowingCharacter();
+    void speedup();
+    void slowdown();
 
 protected:
 	// Called when the game starts or when spawned

@@ -119,13 +119,12 @@ public:
 	int shiftDirection = 0;
 	void shiftdirection(float Value);
 	int totalDistance = 0;
-
+    void SlowDown();
 
 
 private:
     class AWeapon* MyWeapon;
-    
-
+   
 
 
 };

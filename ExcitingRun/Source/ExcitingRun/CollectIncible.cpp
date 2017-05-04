@@ -37,7 +37,7 @@ void ACollectIncible::Tick(float DeltaTime)
 		AExcitingRunGameMode* Mymode = Cast<AExcitingRunGameMode>(UGameplayStatics::GetGameMode(this));
 		Mymode->SetInvincible();
 		FTimerHandle timer;
-		GetWorldTimerManager().SetTimer(timer, this, &ACollectIncible::setback, 8.0f);
+		GetWorldTimerManager().SetTimer(timer, this, &ACollectIncible::setback,4.0f);
 
 		SetActorHiddenInGame(true);
 		//Destroy();
