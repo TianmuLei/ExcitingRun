@@ -7,6 +7,7 @@
 #include "Collectable.h"
 #include "LowerObstacle.h"
 #include "ExcitingRunCharacter.h"
+#include "CollectIncible.h"
 #include "Enemy.h"
 #include <iostream>
 
@@ -21,6 +22,11 @@ ABP_FloorTile::ABP_FloorTile()
 	if (ASD1.Object != NULL) {
 		LowerObstacleClass = (UClass*)ASD1.Object->GeneratedClass;
 	}
+
+	static ConstructorHelpers::FObjectFinder<UBlueprint> ASD2(TEXT("Blueprint'/Game/ThirdPersonCPP/Blueprints/MyCollectIncibleBP'"));
+	if (ASD2.Object != NULL) {
+		CollectIncibleClass = (UClass*)ASD2.Object->GeneratedClass;
+	}
 }
 
 // Called when the game starts or when spawned
@@ -32,11 +38,23 @@ void ABP_FloorTile::BeginPlay()
     int rand2 =FMath::RandRange(0, 9);
     FVector temp = FVector(GetActorLocation().X+100*rand2,GetActorLocation().Y+20*rand,GetActorLocation().Z);
     ACollectable* collect =GetWorld()->SpawnActor<ACollectable>(CollectableClass,temp,FRotator(0,0,0));
+	if (rand2 == 2) {
+		temp = FVector(GetActorLocation().X + 200 * rand2, GetActorLocation().Y + 50 * rand, GetActorLocation().Z);
+		ACollectIncible* collectIn = GetWorld()->SpawnActor<ACollectIncible>(CollectIncibleClass, temp, FRotator(0, 0, 0));
+		collectInv.Add(collectIn);
+
+	}
     collectables.Add(collect);
-    if(rand2==1){
+
+	
+	
+	
+	if(rand2==1){
         AEnemy* enemy =GetWorld()->SpawnActor<AEnemy>(EnemyClass, temp, FRotator(0,0,0));
-        enemy->SpawnDefaultController();
-        Cast<AExcitingRunCharacter>(pawn)->Enemies.Add(enemy);
+		if (enemy) {
+			enemy->SpawnDefaultController();
+			Cast<AExcitingRunCharacter>(pawn)->Enemies.Add(enemy);
+		}
     }
 }
 
@@ -64,6 +82,9 @@ void ABP_FloorTile::dis() {
     }
 	for (int i = 0; i<Lowerobstacles.Num(); ++i) {
 		Lowerobstacles[i]->Destroy();
+	}
+	for (int i = 0; i<collectInv.Num(); ++i) {
+		collectInv[i]->Destroy();
 	}
 
 

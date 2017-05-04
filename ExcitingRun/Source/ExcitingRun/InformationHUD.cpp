@@ -36,6 +36,7 @@ void AInformationHUD::DrawHUD() {
 
 	AExcitingRunGameMode* Mymode = Cast<AExcitingRunGameMode>(UGameplayStatics::GetGameMode(this));
 	int number= Mymode->getCollection();
+	bool invincible = Mymode->getInvincible();
 
 	FString IntAsStringCollection = FString::FromInt(number);
 
@@ -60,6 +61,11 @@ void AInformationHUD::DrawHUD() {
             DrawText(TurnTutorial, FColor::Green, 50, 200, HUDFont);
             std::cout << "IN TURN HUD" << std::endl;
         }
+		if (invincible == true) {
+			FString Invincible = "Invincible";
+			DrawText(Invincible, FColor::Red, 50, 230, HUDFont);
+
+		}
     }
 	
 

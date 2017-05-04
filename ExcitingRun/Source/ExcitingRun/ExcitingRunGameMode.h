@@ -13,7 +13,11 @@ public:
 	void AddCollection();
 	void reduceCollection();
 	int collection=1;
+	bool Invincible = false;
 	int getCollection() { return collection; }
+	void SetInvincible() { Invincible = true; }
+	void SetVincible() { Invincible = false; };
+	bool getInvincible() { return Invincible; }
 };
 
 

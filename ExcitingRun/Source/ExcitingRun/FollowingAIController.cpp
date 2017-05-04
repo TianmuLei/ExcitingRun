@@ -5,6 +5,7 @@
 #include "ExcitingRunCharacter.h"
 #include "FollowingCharacter.h"
 #include <iostream>
+#include "ExcitingRunGameMode.h"
 
 
 void AFollowingAIController::BeginPlay() {
@@ -31,7 +32,11 @@ void AFollowingAIController::Tick(float DeltaTime) {
         float Dist = FVector::Dist(player->GetActorLocation(), GetPawn()->GetActorLocation());
         //std::cout << Dist << std::endl;
         //std::cout << range << std::endl;
-        if(Dist < range){
+		AExcitingRunGameMode* Mymode = Cast<AExcitingRunGameMode>(UGameplayStatics::GetGameMode(this));
+
+		
+        if(Dist < range && (!Mymode->getInvincible()) ){
+
             //std::cout << "IN dist" << std::endl;
             PlayerPawn->dead = true;
         }

@@ -19,7 +19,8 @@ public:
     bool isInside();
     TArray <class AObstacle*> obstacles;
 	TArray <class ALowerObstacle*> Lowerobstacles;
-    TArray <class ACollectable*> collectables;
+	TArray <class ACollectable*> collectables;   
+	TArray <class ACollectIncible*> collectInv;
     bool showTutorial = false;
     bool JumpTutorial = false;
 protected:
@@ -29,7 +30,8 @@ protected:
 		TSubclassOf<AActor> ObstacleClass;
 
 
-		TSubclassOf<AActor> LowerObstacleClass;
+	TSubclassOf<AActor> LowerObstacleClass;
+	TSubclassOf<AActor> CollectIncibleClass;
 
     UPROPERTY(EditAnywhere, Category=Collectable)
     TSubclassOf<AActor> CollectableClass;

@@ -228,7 +228,7 @@ void AExcitingRunCharacter::ShiftRight(float Value) {
 void AExcitingRunCharacter::shiftdirection(float Value) {
 
 
-	GEngine->AddOnScreenDebugMessage(-1, 0.5f, FColor::Yellow, "something");
+	//GEngine->AddOnScreenDebugMessage(-1, 0.5f, FColor::Yellow, "something");
 	if ((Controller != NULL) && (Value != 0.0f))
 	{
 	
