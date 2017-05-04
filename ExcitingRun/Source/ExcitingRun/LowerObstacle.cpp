@@ -30,7 +30,7 @@ void ALowerObstacle::Tick(float DeltaTime)
 	FVector actorLocation = pawn->GetActorLocation();
 	FVector itemLocation = GetActorLocation();
 	float distance = FVector::Dist(actorLocation, itemLocation);
-	if (distance<230 && firsttime) {
+	if (distance<190 && firsttime) {
 		firsttime = false;
 		//GEngine->AddOnScreenDebugMessage(-1, 1.9f, FColor::Yellow, "Point +1");
 		AExcitingRunGameMode* Mymode = Cast<AExcitingRunGameMode>(UGameplayStatics::GetGameMode(this));
