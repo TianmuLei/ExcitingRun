@@ -25,6 +25,7 @@ public:
     FString MoveTutorial;
     FString JumpTutorial;
     FString TurnTutorial;
+    FString ShootTutorial;
 	int collection = 0;
 	void AddCollection();
 };

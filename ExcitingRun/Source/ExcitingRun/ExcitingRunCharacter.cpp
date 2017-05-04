@@ -548,6 +548,9 @@ void AExcitingRunCharacter::OnStartFire(){
     if(MyWeapon){
         MyWeapon->OnStartFire();
     }
+    if(showShootHUD){
+        showShootHUD = false;
+    }
 }
 void AExcitingRunCharacter::OnStopFire(){
     if(MyWeapon){

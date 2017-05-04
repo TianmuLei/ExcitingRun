@@ -45,7 +45,7 @@ void AInformationHUD::DrawHUD() {
         }
         if(MyCharater->showJumpHUD){
             JumpTutorial = "Press Space to Jump";
-            DrawText(JumpTutorial, FColor::Yellow, 200, 120, HUDFont);
+            DrawText(JumpTutorial, FColor::Yellow, 200, 130, HUDFont);
         }
         if (MyCharater->dead) {
             FString overString = "GAME OVER";
@@ -60,6 +60,10 @@ void AInformationHUD::DrawHUD() {
 			FString Invincible = "Invincible!";
 			DrawText(Invincible, FColor::Red, 50, 230, HUDFont);
 		}
+        if(MyCharater->showShootHUD){
+            ShootTutorial = "Click Left Button to Shoot!";
+            DrawText(ShootTutorial, FColor::Red, 200, 160, HUDFont);
+        }
     }
 	
 

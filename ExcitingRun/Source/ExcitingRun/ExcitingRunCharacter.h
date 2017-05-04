@@ -39,6 +39,7 @@ public:
     bool showMoveHUD;
     bool showJumpHUD;
     bool showTurnHUD = true;
+    bool showShootHUD = true;
 	int firstdead = 0;
     FVector FirstOb = FVector(0,0,0);
     FVector FirstLowerOb = FVector(0,0,0);
