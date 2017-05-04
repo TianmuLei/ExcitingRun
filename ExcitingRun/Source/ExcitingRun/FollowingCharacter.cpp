@@ -18,7 +18,7 @@ AFollowingCharacter::AFollowingCharacter()
 void AFollowingCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	GetCharacterMovement()->MaxWalkSpeed = 800.0F;
+	GetCharacterMovement()->MaxWalkSpeed = 815.0F;
     
 	
 }
@@ -41,11 +41,10 @@ void AFollowingCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInput
     
 //}
 void AFollowingCharacter::speedup(){
-    FTimerHandle timer;
-    GetWorldTimerManager().SetTimer(timer, this, &AFollowingCharacter::slowdown,3.0);
-    GetCharacterMovement()->MaxWalkSpeed = 1200.0F;
+   
+    GetCharacterMovement()->MaxWalkSpeed = 815+160;
 }
 
 void AFollowingCharacter::slowdown(){
-    GetCharacterMovement()->MaxWalkSpeed = 800.0F;
+    GetCharacterMovement()->MaxWalkSpeed =815+320;
 }

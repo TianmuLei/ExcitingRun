@@ -21,7 +21,7 @@ void AExcitingRunGameMode::AddCollection() {
 	collection = collection + 1;
 }
 void AExcitingRunGameMode::reduceCollection() {
-	collection = collection - 1;
+	collection = collection - 4;
 
 }
 

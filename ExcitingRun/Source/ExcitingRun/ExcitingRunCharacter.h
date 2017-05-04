@@ -121,10 +121,11 @@ public:
 	void shiftdirection(float Value);
 	int totalDistance = 0;
     void SlowDown();
-
+    float spawnspeed=20;
 
 private:
     class AWeapon* MyWeapon;
+    class AFollowingCharacter* follow;
    
 
 

@@ -318,7 +318,7 @@ void AExcitingRunCharacter::Tick(float DeltaSeconds) {
 //	GEngine->AddOnScreenDebugMessage(-1, 0.5f, FColor::Yellow, totalDistance);
     if(bear){//spawn the bear
         FVector location =FVector(GetActorLocation().X-800,GetActorLocation().Y,GetActorLocation().Z);
-        AFollowingCharacter* follow = GetWorld()->SpawnActor<AFollowingCharacter>(FollowingCharacterClass,location, FRotator(0,0,0));
+        follow = GetWorld()->SpawnActor<AFollowingCharacter>(FollowingCharacterClass,location, FRotator(0,0,0));
         follow->SpawnDefaultController();
         bear=false;
     }
@@ -355,6 +355,17 @@ void AExcitingRunCharacter::Tick(float DeltaSeconds) {
 	if (Mymode->getCollection() <= 0) {
 		dead = true;
 	}
+    
+    if(totalDistance>3000){
+        GetCharacterMovement()->MaxWalkSpeed = 800.0F+160;
+        spawnspeed=25;
+        follow->speedup();
+    }
+    if(totalDistance>6000){
+        GetCharacterMovement()->MaxWalkSpeed = 800.0F+160+160;
+        spawnspeed=20;
+        follow->slowdown();
+    }
 
     if(dead && firstdead==0){
 		firstdead = 1;
@@ -382,7 +393,7 @@ void AExcitingRunCharacter::Tick(float DeltaSeconds) {
 	ABP_FloorTile *myFloor;
 
 	UWorld* const World = GetWorld();
-	if (World && frameCount++ > 30) {
+	if (World && frameCount++ > spawnspeed) {
 		frameCount = 0;
 		FVector SpawnLocation = floorPosition;
         if(NumofFloor==30){

@@ -26,7 +26,10 @@ void AAmmo::Tick(float DeltaTime)
 
     
     APawn* pawn = UGameplayStatics::GetPlayerPawn(this, 0);
+    if(pawn==nullptr){
 
+        return;
+    }
     FVector actorLocation = pawn->GetActorLocation();
     FVector itemLocation = GetActorLocation();
     float distance = FVector::Dist(actorLocation, itemLocation);

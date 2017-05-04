@@ -31,6 +31,13 @@ void AWeapon::Tick(float DeltaTime)
 
 void AWeapon::WeaponTrace(){
     AExcitingRunGameMode* Mymode = Cast<AExcitingRunGameMode>(UGameplayStatics::GetGameMode(this));
+    //AExcitingRunGameMode* Mymode = Cast<AExcitingRunGameMode>(UGameplayStatics::GetGameMode(this));
+    if( Mymode->ammo<=0){
+        if(FireAC){
+            FireAC->Stop();
+        }
+        return;
+    }
     Mymode->ammo=Mymode->ammo-1;
     
     static FName WeaponFireTag = FName(TEXT("WeaponTrace"));
@@ -66,6 +73,10 @@ void AWeapon::WeaponTrace(){
     }
 }
 void AWeapon::OnStartFire(){
+    AExcitingRunGameMode* Mymode = Cast<AExcitingRunGameMode>(UGameplayStatics::GetGameMode(this));
+    if( Mymode->ammo<=0){
+        return;
+    }
     GetWorldTimerManager().SetTimer(WeaponTimer, this, &AWeapon::WeaponTrace, 0.1f,true);
     FireAC=PlayWeaponSound(FireLoopSound);
 }
