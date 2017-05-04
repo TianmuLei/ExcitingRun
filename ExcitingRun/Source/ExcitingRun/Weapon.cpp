@@ -4,8 +4,7 @@
 #include "Weapon.h"
 #include "Obstacle.h"
 #include "Enemy.h"
-
-
+#include "Sound/SoundCue.h"
 // Sets default values
 AWeapon::AWeapon()
 {
@@ -62,7 +61,19 @@ void AWeapon::WeaponTrace(){
 }
 void AWeapon::OnStartFire(){
     GetWorldTimerManager().SetTimer(WeaponTimer, this, &AWeapon::WeaponTrace, 0.1f,true);
+    FireAC=PlayWeaponSound(FireLoopSound);
 }
 void AWeapon::OnStopFire(){
     GetWorldTimerManager().ClearTimer(WeaponTimer);
+    if(FireAC){
+        FireAC->Stop();
+    }
+}
+
+UAudioComponent* AWeapon::PlayWeaponSound(USoundCue* Sound){
+    UAudioComponent* AC=NULL;
+    if(Sound){
+        AC=UGameplayStatics::SpawnSoundAttached(Sound, RootComponent);
+    }
+    return AC;
 }

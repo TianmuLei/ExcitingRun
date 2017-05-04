@@ -13,6 +13,7 @@ class EXCITINGRUN_API AWeapon : public AActor
 public:	
 	// Sets default values for this actor's properties
 	AWeapon();
+   
 
 protected:
 	// Called when the game starts or when spawned
@@ -20,6 +21,13 @@ protected:
     UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = Weapon)
     USkeletalMeshComponent* WeaponMesh;
 	UPROPERTY(EditDefaultsOnly) UParticleSystem* HitEffect;
+    
+    UPROPERTY(EditDefaultsOnly, Category = Sound)
+    class USoundCue* FireLoopSound;
+    UPROPERTY(EditDefaultsOnly, Category = Sound)
+    class USoundCue* FireFinishSound;
+    UPROPERTY(Transient)
+    class UAudioComponent* FireAC;
 
 
 public:	
@@ -30,5 +38,6 @@ public:
     FTimerHandle WeaponTimer;
     void OnStartFire();
     void OnStopFire();
+    UAudioComponent* PlayWeaponSound(USoundCue* Sound);
 	
 };
