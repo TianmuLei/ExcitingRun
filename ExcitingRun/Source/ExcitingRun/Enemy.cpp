@@ -3,7 +3,7 @@
 #include "ExcitingRun.h"
 #include "Enemy.h"
 #include "EnemyAIController.h"
-
+#include "ExcitingRunGameMode.h"
 // Sets default values
 AEnemy::AEnemy()
 {
@@ -23,6 +23,24 @@ void AEnemy::BeginPlay()
 void AEnemy::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+    
+    
+    AExcitingRunGameMode* Mymode = Cast<AExcitingRunGameMode>(UGameplayStatics::GetGameMode(this));
+    
+    if(Mymode->getInvincible()){
+    
+        APawn* pawn=UGameplayStatics::GetPlayerPawn(this, 0);
+        FVector actorLocation =pawn->GetActorLocation();
+        FVector itemLocation = GetActorLocation();
+        float distance = FVector::Dist(actorLocation, itemLocation);
+        
+        
+        if(distance<150.0f){
+            Destroy();
+            
+        }
+        
+    }
 
 }
 

@@ -36,11 +36,11 @@ void ABP_FloorTile::BeginPlay()
     pawn=UGameplayStatics::GetPlayerPawn(this, 0);
     int rand =FMath::RandRange(0,4);
     int rand2 =FMath::RandRange(0, 9);
-    int rand3 =FMath::RandRange(0, 15);
+    int rand3 =FMath::RandRange(0, 13);
     FVector temp = FVector(GetActorLocation().X+100*rand2,GetActorLocation().Y+20*rand,GetActorLocation().Z);
     ACollectable* collect =GetWorld()->SpawnActor<ACollectable>(CollectableClass,temp,FRotator(0,0,0));
 	if (rand3 == 2) {
-		temp = FVector(GetActorLocation().X + 200 * rand2, GetActorLocation().Y + 50 * rand, GetActorLocation().Z);
+		temp = FVector(GetActorLocation().X + 100 * rand2, GetActorLocation().Y + 50 * rand, GetActorLocation().Z);
 		ACollectIncible* collectIn = GetWorld()->SpawnActor<ACollectIncible>(CollectIncibleClass, temp, FRotator(0, 0, 0));
 		collectInv.Add(collectIn);
 
