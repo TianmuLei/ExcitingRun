@@ -14,6 +14,7 @@ public:
 	void reduceCollection();
 	int collection=1;
 	bool Invincible = false;
+    int ammo=100;
 	int getCollection() { return collection; }
 	void SetInvincible() { Invincible = true; }
 	void SetVincible() { Invincible = false; };

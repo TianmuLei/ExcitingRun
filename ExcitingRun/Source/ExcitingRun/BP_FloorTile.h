@@ -28,8 +28,11 @@ protected:
 	virtual void BeginPlay() override;
     UPROPERTY(EditAnywhere, Category=Obstacle)
 		TSubclassOf<AActor> ObstacleClass;
-
-
+    
+    UPROPERTY(EditAnywhere, Category=Obstacle)
+    TSubclassOf<AActor> AmmoClass;
+    
+    
 	TSubclassOf<AActor> LowerObstacleClass;
 	TSubclassOf<AActor> CollectIncibleClass;
 

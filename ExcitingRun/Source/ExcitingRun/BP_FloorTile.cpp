@@ -10,6 +10,7 @@
 #include "CollectIncible.h"
 #include "Enemy.h"
 #include <iostream>
+#include "Ammo.h"
 
 using namespace std;
 
@@ -36,10 +37,15 @@ void ABP_FloorTile::BeginPlay()
     pawn=UGameplayStatics::GetPlayerPawn(this, 0);
     int rand =FMath::RandRange(0,4);
     int rand2 =FMath::RandRange(0, 9);
+    int rand22 =(FMath::RandRange(0, 9)+5)%10;
+    int rand23 =(FMath::RandRange(0, 9)+3)%10;
+
     int rand3 =FMath::RandRange(0, 13);
+    int rand4=FMath::RandRange(0, 6);
     FVector temp = FVector(GetActorLocation().X+100*rand2,GetActorLocation().Y+20*rand,GetActorLocation().Z);
     ACollectable* collect =GetWorld()->SpawnActor<ACollectable>(CollectableClass,temp,FRotator(0,0,0));
-	if (rand3 == 2) {
+	
+    if (rand3 == 2) {
 		temp = FVector(GetActorLocation().X + 100 * rand2, GetActorLocation().Y + 50 * rand, GetActorLocation().Z);
 		ACollectIncible* collectIn = GetWorld()->SpawnActor<ACollectIncible>(CollectIncibleClass, temp, FRotator(0, 0, 0));
 		collectInv.Add(collectIn);
@@ -48,7 +54,10 @@ void ABP_FloorTile::BeginPlay()
     collectables.Add(collect);
 
 	
-	
+    if(rand==0||rand==1){
+        FVector temp11 = FVector(GetActorLocation().X+100*rand22,GetActorLocation().Y+50*rand23,GetActorLocation().Z);
+        GetWorld()->SpawnActor<AAmmo>(AmmoClass, temp11, FRotator(0, 0, 0));
+   }
 	
 	if(rand2==1){
         AEnemy* enemy =GetWorld()->SpawnActor<AEnemy>(EnemyClass, temp, FRotator(0,0,0));

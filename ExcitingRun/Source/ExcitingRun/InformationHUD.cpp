@@ -38,6 +38,10 @@ void AInformationHUD::DrawHUD() {
 	FString CollectionString = "Collection: "+ IntAsStringCollection;
 	DrawText(CollectionString, FColor::White, 50, 80, HUDFont);
     
+    FString IntAsStringAmmo = FString::FromInt(Mymode->ammo);
+    FString Ammo = "Ammo: " + IntAsStringAmmo;
+    DrawText(Ammo, FColor::White, 50, 110, HUDFont);
+    
     if(MyCharater != nullptr){
         if(MyCharater->showMoveHUD){
             MoveTutorial = "Press Q or E to move Left or Right";

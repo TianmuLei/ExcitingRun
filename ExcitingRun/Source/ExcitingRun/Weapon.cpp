@@ -5,6 +5,7 @@
 #include "Obstacle.h"
 #include "Enemy.h"
 #include "Sound/SoundCue.h"
+#include "ExcitingRunGameMode.h"
 // Sets default values
 AWeapon::AWeapon()
 {
@@ -29,6 +30,9 @@ void AWeapon::Tick(float DeltaTime)
    }
 
 void AWeapon::WeaponTrace(){
+    AExcitingRunGameMode* Mymode = Cast<AExcitingRunGameMode>(UGameplayStatics::GetGameMode(this));
+    Mymode->ammo=Mymode->ammo-1;
+    
     static FName WeaponFireTag = FName(TEXT("WeaponTrace"));
     static FName MuzzleSocket = FName(TEXT("MuzzleFlashSocket"));
     FVector StartPos = WeaponMesh->GetSocketLocation(MuzzleSocket);
