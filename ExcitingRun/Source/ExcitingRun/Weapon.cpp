@@ -18,15 +18,15 @@ AWeapon::AWeapon()
 void AWeapon::BeginPlay()
 {
 	Super::BeginPlay();
-    //GetWorldTimerManager().SetTimer(WeaponTimer,this,&AWeapon::WeaponTrace,0.1f,true);
+    PlayWeaponSound(BGM);
+     //GetWorldTimerManager().SetTimer(WeaponTimer,this,&AWeapon::WeaponTrace,0.1f,true);
 }
 
 // Called every frame
 void AWeapon::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
-}
+   }
 
 void AWeapon::WeaponTrace(){
     static FName WeaponFireTag = FName(TEXT("WeaponTrace"));

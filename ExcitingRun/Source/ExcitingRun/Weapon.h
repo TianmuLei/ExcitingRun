@@ -25,6 +25,8 @@ protected:
     UPROPERTY(EditDefaultsOnly, Category = Sound)
     class USoundCue* FireLoopSound;
     UPROPERTY(EditDefaultsOnly, Category = Sound)
+    class USoundCue* BGM;
+    UPROPERTY(EditDefaultsOnly, Category = Sound)
     class USoundCue* FireFinishSound;
     UPROPERTY(Transient)
     class UAudioComponent* FireAC;
