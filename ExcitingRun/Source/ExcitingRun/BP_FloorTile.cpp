@@ -100,12 +100,8 @@ void ABP_FloorTile::createObstacle(){
     FVector temp = FVector(GetActorLocation().X+100*rand2,GetActorLocation().Y+20*rand,GetActorLocation().Z);
     if(!showTutorial){
         Cast<AExcitingRunCharacter>(pawn)->FirstOb = temp;
-        showTutorial =true;
+        showTutorial = true;
         Cast<AExcitingRunCharacter>(pawn)->setShowTutorial();
-    }
-    if(FirstPos == FVector(0,0,0)){
-        FirstPos = temp;
-        cout << "First calculated: " << FirstPos.Size() << endl;
     }
     FRotator rotate =FRotator(0,0,0);
     if(direction ==Right||direction==Left){
@@ -122,10 +118,13 @@ void ABP_FloorTile::createLowerObstacle() {
 		return;
 	}
 	FVector temp = FVector(GetActorLocation().X + 100 * rand2, GetActorLocation().Y+ 20* rand2, GetActorLocation().Z);
-	if (FirstPos == FVector(0, 0, 0)) {
-		FirstPos = temp;
-		cout << "First calculated: " << FirstPos.Size() << endl;
-	}
+    if(!JumpTutorial){
+        Cast<AExcitingRunCharacter>(pawn)->FirstLowerOb = temp;
+        float haha = FVector::Dist(GetActorLocation(), temp);
+        //cout << "First Calcted: " << haha << endl;
+        JumpTutorial = true;
+        Cast<AExcitingRunCharacter>(pawn)->setJumpTutorial();
+    }
 	FRotator rotate = FRotator(0, 0, 0);
 	if (direction == Right || direction == Left) {
 		rotate = FRotator(0, -90.0f, 0);

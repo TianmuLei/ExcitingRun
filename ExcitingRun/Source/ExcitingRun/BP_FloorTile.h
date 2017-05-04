@@ -20,7 +20,8 @@ public:
     TArray <class AObstacle*> obstacles;
 	TArray <class ALowerObstacle*> Lowerobstacles;
     TArray <class ACollectable*> collectables;
-    bool showTutorial=false;
+    bool showTutorial = false;
+    bool JumpTutorial = false;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

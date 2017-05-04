@@ -37,9 +37,13 @@ class AExcitingRunCharacter : public ACharacter
 public:
     //class ABP_FloorTile* myFloor;
     bool showMoveHUD;
+    bool showJumpHUD;
+    bool showTurnHUD = true;
 	int firstdead = 0;
-    FVector FirstOb =FVector(0,0,0);
-    bool showTutorial =false;
+    FVector FirstOb = FVector(0,0,0);
+    FVector FirstLowerOb = FVector(0,0,0);
+    bool showTutorial = false;
+    bool JumpTutorial = false;
 	AExcitingRunCharacter();
 	/** Base turn rate, in deg/sec. Other scaling may affect final turn rate. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
@@ -71,6 +75,7 @@ public:
 	virtual void Tick(float DeltaSeconds);
     
     void setShowTutorial();
+    void setJumpTutorial();
 
 	void updateFloorDirection(FVector& direction);
 	/** 

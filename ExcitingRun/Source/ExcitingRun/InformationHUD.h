@@ -22,7 +22,9 @@ class EXCITINGRUN_API AInformationHUD : public AHUD
 	
 	
 public:
+    FString MoveTutorial;
     FString JumpTutorial;
+    FString TurnTutorial;
 	int collection = 0;
 	void AddCollection();
 };

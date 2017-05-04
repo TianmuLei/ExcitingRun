@@ -334,7 +334,7 @@ void AExcitingRunCharacter::Tick(float DeltaSeconds) {
 
 	if (shiftDirection == Forward)
 	{
-		;
+		
 	}
 	else if (shiftDirection == Right) {
 		shiftdirection(-1 * speed);
@@ -410,6 +410,8 @@ void AExcitingRunCharacter::Tick(float DeltaSeconds) {
 				floorDirectionOld = floorDirection;
 			}*/
 			myFloor = World->SpawnActor<ABP_FloorTile>(BlueprintCorner, SpawnLocation, FloorRotation);
+            myFloor->showTutorial = showTutorial;
+            myFloor->JumpTutorial = JumpTutorial;
 			floorDirectionOld = floorDirection;
 				
 		}
@@ -417,6 +419,7 @@ void AExcitingRunCharacter::Tick(float DeltaSeconds) {
             if (floorDirection == FVector(0,1,0) || floorDirection == FVector(0,-1,0)){
                 myFloor = World->SpawnActor<ABP_FloorTile>(BlueprintPath_h, SpawnLocation, FloorRotation);
                 myFloor->showTutorial = showTutorial;
+                myFloor->JumpTutorial = JumpTutorial;
                 if(floorDirection==FVector(0,1,0)){
                     myFloor->direction=Right;
                 }
@@ -426,6 +429,8 @@ void AExcitingRunCharacter::Tick(float DeltaSeconds) {
             }
 			else {
 				myFloor = World->SpawnActor<ABP_FloorTile>(BlueprintPath, SpawnLocation, FloorRotation);
+                myFloor->showTutorial = showTutorial;
+                myFloor->JumpTutorial = JumpTutorial;
                 if(floorDirection==FVector(1,0,0)){
                     myFloor->direction=Forward;
                 }
@@ -460,13 +465,20 @@ void AExcitingRunCharacter::Tick(float DeltaSeconds) {
         }
 	}
     float dist = FVector::Dist(GetActorLocation(),FirstOb);
-
-    std::cout << "Distance: " << dist << std::endl;
-    if(dist < 1000.0f){
+    float dist2 = FVector::Dist(GetActorLocation(), FirstLowerOb);
+    //std::cout << "Distance2: " << dist2 << std::endl;
+    if(dist < 2000.0f){
         showMoveHUD = true;
     }
     else{
         showMoveHUD = false;
+    }
+    
+    if(dist2 < 2000.0f){
+        showJumpHUD = true;
+    }
+    else{
+        showJumpHUD = false;
     }
 }
 
@@ -496,11 +508,15 @@ void AExcitingRunCharacter::ChangeDirection(float Value)
 //    else if (Value == 0){
 //        canTurnRight = true;
 //    }
-
-
+    
+    
     if (Value != 0 && canTurnRight) {
         canTurnRight = false;
         direction += Value;
+        if(showTurnHUD){
+            showTurnHUD=false;
+            std::cout << "IN TURN" << std::endl;
+        }
         if (direction > 3)
             direction = 0;
         else if (direction < 0)
@@ -540,5 +556,9 @@ void AExcitingRunCharacter::OnStopFire(){
 }
 
 void AExcitingRunCharacter::setShowTutorial(){
-    showTutorial =true;
+    showTutorial = true;
+}
+
+void AExcitingRunCharacter::setJumpTutorial(){
+    JumpTutorial = true;
 }
