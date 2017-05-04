@@ -55,6 +55,8 @@ void AWeapon::WeaponTrace(){
         AEnemy* en =Cast<AEnemy>(Hit.GetActor());
         if(en){
             en->Destroy();
+            PlayWeaponSound(DeathSound);
+
         }
         
     }
