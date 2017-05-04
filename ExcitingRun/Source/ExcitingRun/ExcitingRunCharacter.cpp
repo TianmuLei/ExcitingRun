@@ -27,7 +27,7 @@ AExcitingRunCharacter::AExcitingRunCharacter()
     MyWeapon = nullptr;
 	floorDirection = FVector(1, 0, 0);//Start in the positive x direction
 	floorPosition = FVector(1000, 0, -200);//initial floor position
-	GetCharacterMovement()->MaxWalkSpeed = 3200.0F;
+	GetCharacterMovement()->MaxWalkSpeed = 800.0F;
 
 	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
     SpringArm->RelativeLocation =FVector(0.0f, 0.0f, 54.0f);
