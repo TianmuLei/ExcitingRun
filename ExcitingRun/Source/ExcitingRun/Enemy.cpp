@@ -41,6 +41,23 @@ void AEnemy::Tick(float DeltaTime)
         }
         
     }
+    else{
+        APawn* pawn=UGameplayStatics::GetPlayerPawn(this, 0);
+        FVector actorLocation =pawn->GetActorLocation();
+        FVector itemLocation = GetActorLocation();
+        float distance = FVector::Dist(actorLocation, itemLocation);
+        
+        
+        if(distance<150.0f){
+            AExcitingRunGameMode* Mymode= Cast<AExcitingRunGameMode>(UGameplayStatics::GetGameMode(this));
+            if(!touch){
+                 Mymode->collection-=1;
+                touch=true;
+            }
+           
+            
+        }
+    }
 
 }
 

@@ -12,7 +12,7 @@ public:
 	AExcitingRunGameMode();
 	void AddCollection();
 	void reduceCollection();
-	int collection=1;
+	int collection=5;
 	bool Invincible = false;
     int ammo=100;
 	int getCollection() { return collection; }
