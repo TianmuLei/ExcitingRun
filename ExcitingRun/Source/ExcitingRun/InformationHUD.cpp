@@ -41,11 +41,11 @@ void AInformationHUD::DrawHUD() {
     if(MyCharater != nullptr){
         if(MyCharater->showMoveHUD){
             MoveTutorial = "Press Q or E to move Left or Right";
-            DrawText(MoveTutorial, FColor::Blue, 200, 100, HUDFont);
+            DrawText(MoveTutorial, FColor::Blue, 200, 70, HUDFont);
         }
         if(MyCharater->showJumpHUD){
             JumpTutorial = "Press Space to Jump";
-            DrawText(JumpTutorial, FColor::Yellow, 200, 130, HUDFont);
+            DrawText(JumpTutorial, FColor::Yellow, 200, 100, HUDFont);
         }
         if (MyCharater->dead) {
             FString overString = "GAME OVER";
@@ -53,7 +53,7 @@ void AInformationHUD::DrawHUD() {
         }
         if(MyCharater->showTurnHUD){
             TurnTutorial = "Press A to turn Left and D to turn Right";
-            DrawText(TurnTutorial, FColor::Green, 200, 140, HUDFont);
+            DrawText(TurnTutorial, FColor::Green, 200, 130, HUDFont);
             std::cout << "IN TURN HUD" << std::endl;
         }
 		if (invincible == true) {
