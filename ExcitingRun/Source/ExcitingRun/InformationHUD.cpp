@@ -20,8 +20,7 @@ AInformationHUD::AInformationHUD(const class FObjectInitializer & PCIP): Super(P
 }
 
 void AInformationHUD::DrawHUD() {
-	//FVector2D ScreenDimensions = FVector2D(800,600);
-	Super::DrawHUD();
+    Super::DrawHUD();
 	AExcitingRunCharacter* MyCharater = Cast<AExcitingRunCharacter>(UGameplayStatics::GetPlayerPawn(this, 0));
 
     if(MyCharater != nullptr){
@@ -29,10 +28,6 @@ void AInformationHUD::DrawHUD() {
         FString PowerLevelString = "Score: "+IntAsString;
         DrawText(PowerLevelString, FColor::White, 50, 50, HUDFont);
     }
-
-	//FString PowerLevelString = "Score: "+IntAsString;
-	//DrawText(PowerLevelString, FColor::White, 50, 50, HUDFont);
-
 
 	AExcitingRunGameMode* Mymode = Cast<AExcitingRunGameMode>(UGameplayStatics::GetGameMode(this));
 	int number= Mymode->getCollection();
@@ -46,25 +41,24 @@ void AInformationHUD::DrawHUD() {
     if(MyCharater != nullptr){
         if(MyCharater->showMoveHUD){
             MoveTutorial = "Press Q or E to move Left or Right";
-            DrawText(MoveTutorial, FColor::Blue, 50, 100, HUDFont);
+            DrawText(MoveTutorial, FColor::Blue, 200, 100, HUDFont);
         }
         if(MyCharater->showJumpHUD){
             JumpTutorial = "Press Space to Jump";
-            DrawText(JumpTutorial, FColor::Yellow, 50, 120, HUDFont);
+            DrawText(JumpTutorial, FColor::Yellow, 200, 120, HUDFont);
         }
         if (MyCharater->dead) {
             FString overString = "GAME OVER";
-            DrawText(overString, FColor::Red, 550, 350, HUDFont);
+            DrawText(overString, FColor::Red, 300, 300, HUDFont);
         }
         if(MyCharater->showTurnHUD){
             TurnTutorial = "Press A to turn Left and D to turn Right";
-            DrawText(TurnTutorial, FColor::Green, 50, 200, HUDFont);
+            DrawText(TurnTutorial, FColor::Green, 200, 140, HUDFont);
             std::cout << "IN TURN HUD" << std::endl;
         }
 		if (invincible == true) {
-			FString Invincible = "Invincible";
+			FString Invincible = "Invincible!";
 			DrawText(Invincible, FColor::Red, 50, 230, HUDFont);
-
 		}
     }
 	
