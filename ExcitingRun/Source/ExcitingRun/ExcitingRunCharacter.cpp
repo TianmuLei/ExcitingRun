@@ -382,7 +382,7 @@ void AExcitingRunCharacter::Tick(float DeltaSeconds) {
 	ABP_FloorTile *myFloor;
 
 	UWorld* const World = GetWorld();
-	if (World && frameCount++ > 40) {
+	if (World && frameCount++ > 30) {
 		frameCount = 0;
 		FVector SpawnLocation = floorPosition;
         if(NumofFloor==30){
