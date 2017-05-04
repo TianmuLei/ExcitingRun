@@ -40,7 +40,7 @@ void ABP_FloorTile::BeginPlay()
     int rand22 =(FMath::RandRange(0, 9)+5)%10;
     int rand23 =(FMath::RandRange(0, 9)+3)%10;
 
-    int rand3 =FMath::RandRange(0, 13);
+    int rand3 =FMath::RandRange(0, 15);
     int rand4=FMath::RandRange(0, 6);
     FVector temp = FVector(GetActorLocation().X+100*rand2,GetActorLocation().Y+20*rand,GetActorLocation().Z);
     ACollectable* collect =GetWorld()->SpawnActor<ACollectable>(CollectableClass,temp,FRotator(0,0,0));
