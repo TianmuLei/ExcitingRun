@@ -19,7 +19,7 @@ class AExcitingRunCharacter : public ACharacter
     
 	int direction;
     enum Dir{Forward, Right, Backward, Left};
-    float speed =0.25f;
+    float speed =1.0f;
 
 	FVector floorPosition;
 	int frameCount;

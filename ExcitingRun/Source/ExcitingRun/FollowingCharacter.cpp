@@ -18,7 +18,7 @@ AFollowingCharacter::AFollowingCharacter()
 void AFollowingCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	GetCharacterMovement()->MaxWalkSpeed = 700.0F;
+	GetCharacterMovement()->MaxWalkSpeed = 800.0F;
     
 	
 }
